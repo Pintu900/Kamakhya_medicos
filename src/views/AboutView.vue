@@ -1,7 +1,7 @@
 <!-- AddMedicine.vue -->
 
 <template>
-  <div>
+  <div class="text green">
     <h1>Add Medicine</h1>
     <form @submit.prevent="addMedicine">
       <div>
@@ -73,5 +73,8 @@ div {
 label {
   display: block; /* Make labels block elements to appear on a new line */
   margin-bottom: 5px; /* Add margin below labels */
+}
+.text{
+  text-align: center;
 }
 </style>
