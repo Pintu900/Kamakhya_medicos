@@ -3,20 +3,20 @@
 <template>
   <div class="text green">
     <h1>Add Medicine</h1>
-    <form @submit.prevent="addMedicine">
-      <div>
+    <form @submit.prevent="addMedicine" class="medicine-form">
+      <div class="form-group">
         <label for="name">Name:</label>
-        <input v-model="medicineName" type="text" id="name" required />
+        <input v-model="medicineName" type="text" id="name"  placeholder="Enter name..." required />
       </div>
 
-      <div>
+      <div class="form-group">
         <label for="box">Box:</label>
-        <input v-model="medicineBox" type="number" id="box" required />
+        <input v-model="medicineBox" type="text" id="box" placeholder="Enter Box Number..." required />
       </div>
 
-      <div>
+      <div class="form-group">
         <label for="price">Price:</label>
-        <input v-model="medicinePrice" type="number" id="price" required />
+        <input v-model="medicinePrice" type="text" id="price" placeholder="Enter Price..." required />
       </div>
 
       <button type="submit">Add Medicine</button>
@@ -33,8 +33,8 @@ export default {
   data() {
     return {
       medicineName: '',
-      medicineBox: null,
-      medicinePrice: null,
+      medicineBox: '',
+      medicinePrice: '',
     };
   },
   methods: {
@@ -55,8 +55,8 @@ export default {
 
       // Clear form after adding
       this.medicineName = '';
-      this.medicineBox = null;
-      this.medicinePrice = null;
+      this.medicineBox = '';
+      this.medicinePrice = '';
 
       alert('Medicine added successfully!');
     },
@@ -65,16 +65,52 @@ export default {
 </script>
 
 <style scoped>
-/* Add styling if needed */
-div {
-  margin-bottom: 10px; /* Add margin between input fields */
+.text {
+  text-align: center;
+}
+
+.medicine-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
 }
 
 label {
-  display: block; /* Make labels block elements to appear on a new line */
-  margin-bottom: 5px; /* Add margin below labels */
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
-.text{
-  text-align: center;
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease-in-out;
 }
+
+input:focus {
+  outline: none;
+  border-color: green;
+}
+
+button {
+  background-color: green;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: darkgreen;
+}
+
 </style>

@@ -1,16 +1,20 @@
 <!-- MedicineListItem.vue -->
 
 <template>
-  <div class="medicine-item">
+ <div class="medicine-item">
+  <div class="medicine-details">
     <span>Name: {{ medicine.Name }} </span>
     <p>
-    <span>Box: {{ medicine.box }} </span>
-    <span>Price: {{ medicine.price }} </span>
+      <span>Box: {{ medicine.box }} </span>
+      <span>Price: {{ medicine.price }} </span>
     </p>
-    <button @click="deleteMedicine" class="delete-icon">
-        <i class="fas fa-trash-alt"></i>
-      </button>
   </div>
+  <div class="delete-container">
+    <button @click="deleteMedicine" class="delete-icon">
+      <i class="fas fa-trash-alt"></i>
+    </button>
+  </div>
+</div>
 </template>
 
 <script>
@@ -36,12 +40,24 @@ export default {
 </script>
 
 <style scoped>
-.medicine-item {
-  border: 1px solid #ccc; /* Add a border to the div */
-  padding: 10px; /* Example padding */
-  margin-bottom: 10px; /* Example margin bottom */
-}
 span {
   margin-right: 10px; /* Adjust the margin value as needed */
+}
+
+.medicine-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.medicine-details {
+  display: inline-block;
+}
+
+.delete-container {
+  display: inline-block;
 }
 </style>

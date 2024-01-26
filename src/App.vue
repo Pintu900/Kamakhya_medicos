@@ -30,6 +30,12 @@ header {
   display: block;
   margin: 0 auto 2rem;
 }
+@media (max-width: 767px) {
+  .logo {
+    width: 75px; /* Decrease the width for small screens */
+    height: 75px; /* Decrease the height for small screens */
+  }
+}
 
 nav {
   width: 100%;
