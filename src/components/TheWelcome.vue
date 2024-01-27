@@ -117,5 +117,8 @@ export default {
   .vertical-line {
     display: none; /* Hide the vertical line on screens less than 1024px */
   }
+  h1 {
+    font-size: 1.4rem; /* Decrease font size for h1 on smaller screens */
+  }
 }
 </style>

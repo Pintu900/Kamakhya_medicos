@@ -47,7 +47,7 @@ h3 {
 
 @media (max-width: 1023px) {
   h1 {
-    font-size: 1.5rem; /* Decrease font size for h1 on smaller screens */
+    font-size: 1.6rem; /* Decrease font size for h1 on smaller screens */
   }
 
   h3 {
