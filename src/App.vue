@@ -28,12 +28,12 @@ header {
 
 .logo {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 auto 0.1rem;
 }
 @media (max-width: 767px) {
   .logo {
-    width: 75px; /* Decrease the width for small screens */
-    height: 75px; /* Decrease the height for small screens */
+    width: 50px; /* Decrease the width for small screens */
+    height:50px; /* Decrease the height for small screens */
   }
 }
 
@@ -41,7 +41,7 @@ nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 0rem;
 }
 
 nav a.router-link-exact-active {
