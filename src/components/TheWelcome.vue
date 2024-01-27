@@ -1,24 +1,23 @@
 <template>
-  <div>
-    <h1 class="green text">Medicine List</h1>
-    <div class="search-container">
-      <input
-        v-model="searchTerm"
-        placeholder="Search by name"
-        class="search-input"
-      />
-    </div>
-    <div class="scrollable-list">
-      <div v-if="searchTerm === ''">
-        <!-- If search input is empty, show full list -->
-        <div v-for="(medicine, key) in medicines" :key="key">
-          <WelcomeItem :medicine="{ ...medicine, key }" />
-        </div>
+  <div class="flex-container">
+    <div class="vertical-line"></div>
+    <div class="content">
+      <h1 class="green text">Medicine List</h1>
+      <div class="search-container">
+        <input v-model="searchTerm" placeholder="Search by name" class="search-input" />
       </div>
-      <div v-else>
-        <!-- If search input is not empty, show filtered list -->
-        <div v-for="(medicine, key) in filteredMedicines" :key="key">
-          <WelcomeItem :medicine="{ ...medicine, key }" />
+      <div class="scrollable-list">
+        <div v-if="searchTerm === ''">
+          <!-- If search input is empty, show full list -->
+          <div v-for="(medicine, key) in medicines" :key="key">
+            <WelcomeItem :medicine="{ ...medicine, key }" />
+          </div>
+        </div>
+        <div v-else>
+          <!-- If search input is not empty, show filtered list -->
+          <div v-for="(medicine, key) in filteredMedicines" :key="key">
+            <WelcomeItem :medicine="{ ...medicine, key }" />
+          </div>
         </div>
       </div>
     </div>
@@ -99,5 +98,24 @@ export default {
 
 .search-input:focus {
   border-color: #4caf50; /* Adjust focus color as needed */
+}
+.flex-container {
+  display: flex;
+  align-items: center;
+}
+
+.vertical-line {
+  border-left: 1px solid #e2e836; /* Adjust the color and width as needed */
+  height: 85vh; /* Adjust the height as needed */
+  margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.content {
+  flex: 1; /* Allow content to take remaining space */
+}
+@media (max-width: 1024px) {
+  .vertical-line {
+    display: none; /* Hide the vertical line on screens less than 1024px */
+  }
 }
 </style>

@@ -14,6 +14,21 @@ defineProps({
 </template>
 
 <style scoped>
+@keyframes fadeIn {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.greetings {
+  animation: fadeIn 3s linear infinite; /* Use the fadeIn animation with a duration of 2 seconds, linear timing function, and make it infinite */
+}
 h1 {
   font-weight: 500;
   font-size: 2.6rem;

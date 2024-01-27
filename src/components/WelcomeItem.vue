@@ -53,7 +53,7 @@ span {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid #f2a950;
   padding: 10px;
   margin-bottom: 10px;
 }
