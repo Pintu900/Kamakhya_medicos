@@ -2,7 +2,7 @@
   <div class="flex-container">
     <div class="vertical-line"></div>
     <div class="content">
-      <h1 class="green text">Medicine List</h1>
+      <h1 class="green text">Medicine List({{ numMedicines}})</h1>
       <div class="search-container">
         <input v-model="searchTerm" placeholder="Search by name" class="search-input" />
       </div>
@@ -37,6 +37,7 @@ export default {
   setup() {
     const medicines = ref({});
     const searchTerm = ref('');
+    const numMedicines = ref('');
 
     const medicinesRef = dbRef(database, 'Medicine');
 
@@ -44,6 +45,8 @@ export default {
       onValue(medicinesRef, (snapshot) => {
         if (snapshot.exists()) {
           medicines.value = snapshot.val();
+          numMedicines.value = medicines.value ? Object.keys(medicines.value).length : 0;
+          console.log(`Number of medicines: ${numMedicines.value}`);
         }
       });
     });
@@ -68,6 +71,7 @@ export default {
       medicines,
       searchTerm,
       filteredMedicines,
+      numMedicines,
     };
   },
 };
