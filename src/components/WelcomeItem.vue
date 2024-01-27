@@ -10,6 +10,11 @@
     </p>
   </div>
   <div class="delete-container">
+    <router-link :to="{ name: 'edit', params: { id: medicine.key } }">
+        <button class="edit-icon">
+          <i class="fas fa-edit"></i>
+        </button>
+      </router-link>
     <button @click="deleteMedicine" class="delete-icon">
       <i class="fas fa-trash-alt"></i>
     </button>

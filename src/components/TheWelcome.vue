@@ -49,14 +49,21 @@ export default {
       });
     });
 
-    // Filter medicines based on the search term
     const filteredMedicines = computed(() => {
-      const lowerSearchTerm = searchTerm.value.toLowerCase().trim();
-      return Object.values(medicines.value).filter((medicine) => {
-        const medicineName = medicine && medicine.Name ? medicine.Name.toLowerCase() : '';
-        return medicineName.includes(lowerSearchTerm);
-      });
-    });
+  const lowerSearchTerm = searchTerm.value.toLowerCase().trim();
+  
+  // Filter medicines based on the lowercase search term
+  return Object.entries(medicines.value).reduce((filtered, [key, medicine]) => {
+    const medicineName = medicine && medicine.Name ? medicine.Name.toLowerCase() : '';
+    
+    // If the medicineName includes the lowercase search term, add it to the filtered object
+    if (medicineName.includes(lowerSearchTerm)) {
+      filtered[key] = medicine;
+    }
+    
+    return filtered;
+  }, {});
+});
 
     return {
       medicines,
