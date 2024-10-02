@@ -79,7 +79,7 @@ export default {
 
 <style scoped>
 .scrollable-list {
-  max-height: 500px; /* Set a fixed height for the scrollable section */
+  max-height: 100vh; /* Set a fixed height for the scrollable section */
   overflow-y: auto; /* Enable vertical scrolling */ /* Example border for visualization */
   padding: 10px; /* Example padding */
 }
