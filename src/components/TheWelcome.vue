@@ -2,7 +2,7 @@
   <div class="flex-container">
     <div class="vertical-line"></div>
     <div class="content">
-      <h1 class="green text">Medicine List({{ numMedicines}})</h1>
+      <h1 class="green text">Medicine List({{ numMedicines }})</h1>
       <div class="search-container">
         <input v-model="searchTerm" placeholder="Search by name" class="search-input" />
       </div>
@@ -22,68 +22,68 @@
       </div>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
-import { ref, onMounted, computed } from 'vue';
-import { onValue, ref as dbRef } from 'firebase/database';
-import database from '@/firebase'; // Adjust the path based on your project structure
-import WelcomeItem from '@/components/WelcomeItem.vue';
+import { ref, onMounted, computed } from 'vue'
+import { onValue, ref as dbRef } from 'firebase/database'
+import database from '@/firebase' // Adjust the path based on your project structure
+import WelcomeItem from '@/components/WelcomeItem.vue'
 
 export default {
   components: {
-    WelcomeItem,
+    WelcomeItem
   },
   setup() {
-    const medicines = ref({});
-    const searchTerm = ref('');
-    const numMedicines = ref('');
+    const medicines = ref({})
+    const searchTerm = ref('')
+    const numMedicines = ref('')
 
-    const medicinesRef = dbRef(database, 'Medicine');
+    const medicinesRef = dbRef(database, 'Medicine')
 
     onMounted(() => {
       onValue(medicinesRef, (snapshot) => {
         if (snapshot.exists()) {
-          medicines.value = snapshot.val();
-          numMedicines.value = medicines.value ? Object.keys(medicines.value).length : 0;
-          console.log(`Number of medicines: ${numMedicines.value}`);
+          medicines.value = snapshot.val()
+          numMedicines.value = medicines.value ? Object.keys(medicines.value).length : 0
+          console.log(`Number of medicines: ${numMedicines.value}`)
         }
-      });
-    });
+      })
+    })
 
     const filteredMedicines = computed(() => {
-  const lowerSearchTerm = searchTerm.value.toLowerCase().trim();
-  
-  // Filter medicines based on the lowercase search term
-  return Object.entries(medicines.value).reduce((filtered, [key, medicine]) => {
-    const medicineName = medicine && medicine.Name ? medicine.Name.toLowerCase() : '';
-    
-    // If the medicineName includes the lowercase search term, add it to the filtered object
-    if (medicineName.includes(lowerSearchTerm)) {
-      filtered[key] = medicine;
-    }
-    
-    return filtered;
-  }, {});
-});
+      const lowerSearchTerm = searchTerm.value.toLowerCase().trim()
+
+      // Filter medicines based on the lowercase search term
+      return Object.entries(medicines.value).reduce((filtered, [key, medicine]) => {
+        const medicineName = medicine && medicine.Name ? medicine.Name.toLowerCase() : ''
+
+        // If the medicineName includes the lowercase search term, add it to the filtered object
+        if (medicineName.includes(lowerSearchTerm)) {
+          filtered[key] = medicine
+        }
+
+        return filtered
+      }, {})
+    })
 
     return {
       medicines,
       searchTerm,
       filteredMedicines,
-      numMedicines,
-    };
-  },
-};
+      numMedicines
+    }
+  }
+}
 </script>
 
 <style scoped>
 .scrollable-list {
-  max-height: 100vh; /* Set a fixed height for the scrollable section */
+  max-height: calc(100vh - 280px); /* Set a fixed height for the scrollable section */
   overflow-y: auto; /* Enable vertical scrolling */ /* Example border for visualization */
   padding: 10px; /* Example padding */
 }
-.text{
+.text {
   text-align: center;
 }
 .search-container {
